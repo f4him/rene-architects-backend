@@ -2,10 +2,9 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const tagsSchema = new Schema({
+const tagSchema = new Schema({
     name:{
-        type: String,
-        required: true
+        type: String
     }
 });
 
