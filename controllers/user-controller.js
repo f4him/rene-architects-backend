@@ -71,3 +71,24 @@ export const updateUser = (req, res, next) => {
         });
       });
   };
+
+
+//   delete user
+
+export const deleteUser = (req, res) => {
+    User.findByIdAndRemove(req.params.userID)
+      .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "User not found with id " + req.params.userID,
+          });
+        }
+        res.send({ message: "User deleted successfully!" });
+      })
+      .catch((err) => {
+        return res.status(500).send({
+          message: "Could not delete user with id " + req.params.userID,
+        });
+      });
+  };
+  

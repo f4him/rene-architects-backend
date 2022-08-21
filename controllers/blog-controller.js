@@ -63,3 +63,21 @@ export const updatePost = (req, res, next) => {
       });
   };
 
+
+//   delete post
+export const deletePost = (req, res) => {
+    Post.findByIdAndRemove(req.params.postID)
+      .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "Post not found with id " + req.params.postID,
+          });
+        }
+        res.send({ message: "Post deleted successfully!" });
+      })
+      .catch((err) => {
+        return res.status(500).send({
+          message: "Could not delete post with id " + req.params.postID,
+        });
+      });
+  };

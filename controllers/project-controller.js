@@ -23,18 +23,18 @@ export const addSingleProject = async (req, res, next) => {
     
     // image er kaj baki
 
-    const post = new Project({
+    const project = new Project({
         name,
         location
     });
 
     try{
-        await post.save();
+        await project.save();
     }catch (err){
         console.log(err)
 
     }
-    return res.status(201).json({post})
+    return res.status(201).json({project})
 }
 
 //update project
@@ -57,6 +57,25 @@ export const updateProject = (req, res, next) => {
       .catch((err) => {
         return res.status(500).send({
             message: "Error updating project with id " + req.params.projectID,
+        });
+      });
+  };
+
+
+//   delete project
+export const deleteProject = (req, res) => {
+    Project.findByIdAndRemove(req.params.projectID)
+      .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "Project not found with id " + req.params.projectID,
+          });
+        }
+        res.send({ message: "Project deleted successfully!" });
+      })
+      .catch((err) => {
+        return res.status(500).send({
+          message: "Could not delete project with id " + req.params.projectID,
         });
       });
   };

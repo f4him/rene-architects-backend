@@ -71,3 +71,21 @@ export const addSingleCategory = async (req, res, next) => {
     }
     return res.status(201).json({category})
 }
+
+//   delete tag
+export const deleteTag = (req, res) => {
+    Tag.findByIdAndRemove(req.params.tagID)
+      .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "Tag not found with id " + req.params.tagID,
+          });
+        }
+        res.send({ message: "Tag deleted successfully!" });
+      })
+      .catch((err) => {
+        return res.status(500).send({
+          message: "Could not delete tag with id " + req.params.tagID,
+        });
+      });
+  };
