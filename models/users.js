@@ -4,23 +4,14 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     name:{
-        type: String,
-        required: true
+        type: String
     },
-    role: {
-        type: String,
-        default: 'rene_admin',
-        required: true
-    },
+
     email:{
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     passsword:{
-        type: String,
-        required: true,
-        minlength: 6
+        type: String
     }
 });
 

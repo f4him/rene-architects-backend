@@ -7,20 +7,9 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
-        type: String,                   //date type fix
-        default: 'rene_admin',
-        required: true
-    },
-    image:{
-        type: String,
-    },
     body:{
         type: String,
         required: true
-    },
-    tags: {
-        type: [String]
     }
 });
 

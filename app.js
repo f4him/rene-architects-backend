@@ -5,16 +5,16 @@ import "dotenv/config"
 
 
 const app = express();
+app.use(express.json())
 
 app.use("/api",router)
-
 
 
 const start = async () => {
     try {
         await connectDB();
         app.listen(process.env.PORT, () => {
-            console.log(`BACKEND SERVER ON @ http://localhost:${process.env.PORT}/api/user`);
+            console.log(`BACKEND SERVER ON @ http://localhost:${process.env.PORT}/api/userlist`);
         });
     } catch (error) {
         console.log(error);
