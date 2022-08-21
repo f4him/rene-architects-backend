@@ -39,3 +39,27 @@ export const addSinglePost = async (req, res, next) => {
 }
 
 
+//update post
+export const updatePost = (req, res, next) => {
+    const {title, body} = req.body;
+
+    Post.findByIdAndUpdate(
+      req.params.postID,
+      {title, body},
+      { new: true }
+    )
+      .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "Post not found with id " + req.params.postID,
+          });
+        }
+        res.send(data);
+      })
+      .catch((err) => {
+        return res.status(500).send({
+            message: "Error updating post with id " + req.params.postID,
+        });
+      });
+  };
+

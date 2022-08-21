@@ -48,3 +48,26 @@ export const addSingleUser = async (req, res, next) => {
 }
 
 
+//update user
+export const updateUser = (req, res, next) => {
+    const {name, email, password} = req.body;
+
+    User.findByIdAndUpdate(
+      req.params.userID,
+      {name, email, password},
+      { new: true }
+    )
+      .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "User not found with id " + req.params.userID,
+          });
+        }
+        res.send(data);
+      })
+      .catch((err) => {
+        return res.status(500).send({
+            message: "Error updating user with id " + req.params.userID,
+        });
+      });
+  };

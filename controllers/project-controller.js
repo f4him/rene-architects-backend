@@ -37,4 +37,26 @@ export const addSingleProject = async (req, res, next) => {
     return res.status(201).json({post})
 }
 
+//update project
+export const updateProject = (req, res, next) => {
+    const {name, location} = req.body;
 
+    Project.findByIdAndUpdate(
+      req.params.projectID,
+      {name, location},
+      { new: true }
+    )
+      .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "Project not found with id " + req.params.projectID,
+          });
+        }
+        res.send(data);
+      })
+      .catch((err) => {
+        return res.status(500).send({
+            message: "Error updating project with id " + req.params.projectID,
+        });
+      });
+  };
