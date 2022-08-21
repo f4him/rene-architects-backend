@@ -1,11 +1,11 @@
-import Categories from "../models/categories";
-import Tags from "../models/tags";
+import Category from "../models/categories";
+import Tag from "../models/tags";
 
 // get all tags
 export const getAllTags = async (req, res, next) => {
     let tags;
     try{
-        tags = await Tags.find();
+        tags = await Tag.find();
     } catch(err){
         console.log(err);
     }
@@ -22,26 +22,43 @@ export const getAllTags = async (req, res, next) => {
 export const addSingleTag = async (req, res, next) => {
     const {name} = req.body;
     
-    const tag = new Tags({
+    const tag = new Tag({
         name
     });
-
+    
     try{
         await tag.save();
     }catch (err){
         console.log(err)
-
+        
     }
     return res.status(201).json({tag})
 }
 
+//   delete tag
+export const deleteTag = (req, res) => {
+    Tag.findByIdAndRemove(req.params.tagID)
+      .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "Tag not found with id " + req.params.tagID,
+          });
+        }
+        res.send({ message: "Tag deleted successfully!" });
+      })
+      .catch((err) => {
+        return res.status(500).send({
+          message: "Could not delete tag with id " + req.params.tagID,
+        });
+      });
+  };
 
 
 // get all categories
 export const getAllCategories = async (req, res, next) => {
     let categories;
     try{
-        categories = await Categories.find();
+        categories = await Category.find();
     } catch(err){
         console.log(err);
     }
@@ -59,7 +76,7 @@ export const getAllCategories = async (req, res, next) => {
 export const addSingleCategory = async (req, res, next) => {
     const {name} = req.body;
     
-    const category = new Categories({
+    const category = new Category({
         name
     });
 
@@ -72,20 +89,21 @@ export const addSingleCategory = async (req, res, next) => {
     return res.status(201).json({category})
 }
 
-//   delete tag
-export const deleteTag = (req, res) => {
-    Tag.findByIdAndRemove(req.params.tagID)
+
+//   delete category
+export const deleteCategory = (req, res) => {
+    Category.findByIdAndRemove(req.params.categoryID)
       .then((data) => {
         if (!data) {
           return res.status(404).send({
-            message: "Tag not found with id " + req.params.tagID,
+            message: "Category not found with id " + req.params.categoryID,
           });
         }
-        res.send({ message: "Tag deleted successfully!" });
+        res.send({ message: "Category deleted successfully!" });
       })
       .catch((err) => {
         return res.status(500).send({
-          message: "Could not delete tag with id " + req.params.tagID,
+          message: "Could not delete category with id " + req.params.categoryID,
         });
       });
   };

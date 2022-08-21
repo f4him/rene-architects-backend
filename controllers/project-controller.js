@@ -15,6 +15,22 @@ export const getAllProjects = async (req, res, next) => {
     return res.status(200).json({ projects });
 }
 
+// get single project by ID
+export const getSingleProject = async (req, res, next) => {
+    let project;
+    try{
+        project = await Project.findById(req.params.projectID);
+    } catch(err){
+        console.log(err);
+    }
+
+    if(!project) {
+        return res.status(404).json({ message : "No projects found"});
+    }
+    return res.status(200).json({ project });
+}
+  
+
 
 // add single project
 

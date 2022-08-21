@@ -16,6 +16,21 @@ export const getAllPosts = async (req, res, next) => {
     return res.status(200).json({ posts });
 }
 
+// get single post by ID
+export const getSinglePost = async (req, res, next) => {
+    let post;
+    try{
+        post = await Post.findById(req.params.postID);
+    } catch(err){
+        console.log(err);
+    }
+
+    if(!post) {
+        return res.status(404).json({ message : "No posts found"});
+    }
+    return res.status(200).json({ post });
+}
+  
 
 // add single post
 
