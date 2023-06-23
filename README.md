@@ -1,8 +1,13 @@
 # rene-architects-backend
 Backend api for https://renearchitects.com
 
+## Details
 
+- Architecture farm website
+- REST api for blog section
+- Admin routes (CRUD operations on posts etc) 
 
+### Routes Created
 get("/userlist", getAllUser )
 post("/adduser", addSingleUser)
 put("/updateuser/:userID", updateUser)
@@ -27,3 +32,7 @@ delete("/deletetag/:tagID", deleteTag)
 get("/categories", getAllCategories )
 post("/addcategory", addSingleCategory )
 delete("/deletecategory/:categoryID", deleteCategory)
+
+## To-Do
+
+- Authentication
