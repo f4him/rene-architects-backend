@@ -1,5 +1,5 @@
 # rene-architects-backend
-Backend api for https://renearchitects.com
+API for https://renearchitects.com
 
 ## Details
 
