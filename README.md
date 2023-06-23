@@ -8,30 +8,30 @@ Backend api for https://renearchitects.com
 - Admin routes (CRUD operations on posts etc) 
 
 ### Routes Created
-get("/userlist", getAllUser )\
-post("/adduser", addSingleUser)
-put("/updateuser/:userID", updateUser)
-delete("/deleteuser/:userID", deleteUser)
+get("/userlist", getAllUser)\
+post("/adduser", addSingleUser)\
+put("/updateuser/:userID", updateUser)\
+delete("/deleteuser/:userID", deleteUser)\
 
-get("/blog", getAllPosts )
-get("/post/:postID", getSinglePost)
-post("/addpost", addSinglePost )
-put("/updatepost/:postID", updatePost)
-delete("/deletepost/:postID", deletePost)
+get("/blog", getAllPosts)\
+get("/post/:postID", getSinglePost)\
+post("/addpost", addSinglePost)\
+put("/updatepost/:postID", updatePost)\
+delete("/deletepost/:postID", deletePost)\
 
-get("/projects", getAllProjects )
-get("/project/:projectID", getSingleProject)
-post("/addproject", addSingleProject )
-put("/updateproject/:projectID", updateProject)
-delete("/deleteproject/:projectID", deleteProject)
+get("/projects", getAllProjects)\
+get("/project/:projectID", getSingleProject)\
+post("/addproject", addSingleProject)\
+put("/updateproject/:projectID", updateProject)\
+delete("/deleteproject/:projectID", deleteProject)\
 
-get("/tags", getAllTags )
-post("/addtag", addSingleTag )
-delete("/deletetag/:tagID", deleteTag)
+get("/tags", getAllTags)\
+post("/addtag", addSingleTag)\
+delete("/deletetag/:tagID", deleteTag)\
 
-get("/categories", getAllCategories )
-post("/addcategory", addSingleCategory )
-delete("/deletecategory/:categoryID", deleteCategory)
+get("/categories", getAllCategories)\
+post("/addcategory", addSingleCategory)\
+delete("/deletecategory/:categoryID", deleteCategory)\
 
 ## To-Do
 
