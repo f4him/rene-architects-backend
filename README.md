@@ -8,7 +8,7 @@ Backend api for https://renearchitects.com
 - Admin routes (CRUD operations on posts etc) 
 
 ### Routes Created
-get("/userlist", getAllUser )
+get("/userlist", getAllUser )\
 post("/adduser", addSingleUser)
 put("/updateuser/:userID", updateUser)
 delete("/deleteuser/:userID", deleteUser)
